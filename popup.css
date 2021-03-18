@@ -1,0 +1,84 @@
+body  {
+  width: 400px;
+  height: 350px;
+  display: grid;
+  grid-template-rows: 2fr 1fr 4fr 1fr 2fr;
+}
+
+h2 {
+  grid-row: 1;
+  justify-self: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+hr {
+  width: 100%;
+  height: 0px;
+}
+
+#blue {
+  border-color: blue;
+  grid-row: 2;
+}
+
+#black {
+  grid-row: 4;
+  margin-top: 30px;
+}
+
+
+h3 {
+  grid-row: 3;
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-weight: lighter;
+}
+
+#changeColor {
+  grid-row: 3;
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  margin: 0px 0px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+p {
+  grid-row: 3;
+  grid-column: 1;
+  margin-top: 160px;
+  align-self: flex-end;
+  justify-self: center;
+}
+
+#changeColor.current {
+  box-shadow: 0 0 0 2px white,
+              0 0 0 4px black;
+}
+
+.footer {
+  align-self: center;
+  grid-row: 5;
+  grid-column: 1;
+  height: 40px;
+  width: 100px;
+  font-size: 0.8em;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  /* padding-bottom: 30px; */
+}
+
+#git {
+  justify-self: end;
+}
