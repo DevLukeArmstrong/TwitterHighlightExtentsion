@@ -6,20 +6,24 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="popup.css">
   </head>
-  <body>
-    <h2>Twitter Link Colour Picker</h2>
-    <hr id="blue">
-    <button data-jscolor="" id="changeColor"></button>
-    <h3>Click!</h3>
-    <p>Click me to pick a colour</p>
-    <hr id="black">
-    <button class="footer" id="coffee"><i class="fas fa-coffee"></i> Buy me a coffee!</button>
-    <button class="footer" id="git"><i class="fab fa-github"></i> DvLuke</button>
 
-    <!-- <input data-jscolor=""> -->
-    <script src="jscolor.js"></script>
+  <body>
+    <h2 id="h2Title">Twitter Link Colour Picker</h2>
+    <hr id="blue">
+    <p>Click me to pick a colour</p>
+    <input type="color" id="pickedColour" name="pickedColour"
+           value="#1DA1F2">
+    <button id="save">Save preference</button>
+    <hr id="black">
+    <button class="footer" id="coffee">
+      <i class="fas fa-coffee fa-2x"></i>
+      <p class="center">Buy me a coffee!</p>
+    </button>
+    <button class="footer" id="git">
+      <i class="fab fa-github fa-2x"></i>
+      <p class="center">DevLuke</p> </button>
+
     <script src="popup.js"></script>
   </body>
-</html>
 
-<!-- You can't use the extentsion on the chrome extension page. go to google search and use it -->
+</html>

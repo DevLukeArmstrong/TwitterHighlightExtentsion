@@ -2,7 +2,7 @@ body  {
   width: 400px;
   height: 350px;
   display: grid;
-  grid-template-rows: 2fr 1fr 4fr 1fr 2fr;
+  grid-template-rows: 2fr 1fr 5fr 1fr 1fr;
 }
 
 h2 {
@@ -17,7 +17,7 @@ hr {
 }
 
 #blue {
-  border-color: blue;
+  border-color: #1DA1F2;
   grid-row: 2;
 }
 
@@ -26,18 +26,7 @@ hr {
   margin-top: 30px;
 }
 
-
-h3 {
-  grid-row: 3;
-  grid-column: 1;
-  justify-self: center;
-  align-self: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.9rem;
-  font-weight: lighter;
-}
-
-#changeColor {
+#pickedColour {
   grid-row: 3;
   grid-column: 1;
   justify-self: center;
@@ -45,23 +34,48 @@ h3 {
   height: 100px;
   width: 100px;
   padding: 0px;
-  margin: 0px 0px;
+  margin-top: 0px;
+  border: none;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+#pickedColour:focus {
   outline: none;
-  border: 1px solid black;
+}
+
+input[type=color]::-webkit-color-swatch {
+  border: none;
+  border-color: transparent;
+  background-color: transparent;
   border-radius: 50%;
+  padding: 0;
+}
+
+input[type=color]::-webkit-color-swatch-wrapper {
+    border: none;
+    border-color: transparent;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 0;
 }
 
 p {
   grid-row: 3;
   grid-column: 1;
-  margin-top: 160px;
-  align-self: flex-end;
+  margin-top: 0px;
+  align-self: flex-start;
   justify-self: center;
 }
 
-#changeColor.current {
-  box-shadow: 0 0 0 2px white,
-              0 0 0 4px black;
+#save {
+  grid-row: 3;
+  grid-column: 1;
+  align-self: flex-end;
+  margin-top: 100px;
+  border: 1px solid #1DA1F2;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
 }
 
 .footer {
@@ -69,16 +83,25 @@ p {
   grid-row: 5;
   grid-column: 1;
   height: 40px;
-  width: 100px;
-  font-size: 0.8em;
+  width: 180px;
+  font-size: 0.9em;
   outline: none;
   border: none;
   background-color: transparent;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  /* padding-bottom: 30px; */
+}
+
+.center {
+  text-align: center;
 }
 
 #git {
   justify-self: end;
+}
+
+i {
+  color: #1DA1F2;
+  padding: 0px 5px;
+  font-size: 1em;
 }

@@ -1,38 +1,40 @@
+let regex = /(https|http):\/\/twitter.com*/i;
+
+chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+  if ( regex.test(tabs[0].url) ) {
+    document.getElementById("h2Title").innerText = "Twitter Link Colour Picker";
+  } else {
+    console.log("did not match");
+    document.getElementById("h2Title").innerText = "Please navigate to Twitter";
+  }
+});
+
+
 // Initialize button with users's prefered color
-let changeColor = document.getElementById("changeColor");
+let changeColor = document.getElementById("pickedColour");
+let saveBtn = document.getElementById("save");
+let gitBtn = document.getElementById("git");
+let coffeeBtn = document.getElementById("coffee");
 
 chrome.storage.sync.get("color", ({ color }) => {
-  // changeColor.style.backgroundColor = color;
+  changeColor.setAttribute('value', color);
+  console.log(changeColor.style.value);
 });
 
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+// When the button is clicked, change saved colour
+saveBtn.addEventListener("click", async () => {
+  // Get and set new value
+  let color = changeColor.value;
+  chrome.storage.sync.set({ color });
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: setLinkColors,
-  });
 });
 
-// The body of this function will be execuetd as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    // document.body.style.backgroundColor = color;
-  });
-}
+gitBtn.addEventListener("click", () => {
+  window.open("https://github.com/DevLukeArmstrong",'_blank');
+});
 
-function setLinkColors() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    let links = document.getElementsByTagName("a");
-    links = Array.from(links);
-    links.forEach((link) => {
-      // Get a tags child if its datetime don't change
-      if (link.firstChild.tagName !== 'TIME'){
-        link.style.color = color;
-      }
-    });
-  });
-}
+
+coffeeBtn.addEventListener("click", () => {
+  window.open("https://www.buymeacoffee.com/MagmusOptimimus",'_blank');
+});
