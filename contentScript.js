@@ -55,6 +55,35 @@ function changeTabsColor(tabs, color) {
   }
 }
 
+function changeNavIconColors(icons, color){
+  icons.forEach((parent) => {
+    setIconColor(parent, black);
+
+    // Change text colors
+    if(parent.firstChild.children[1]){
+      // Expanded view
+      let icon = parent.firstChild.firstChild.firstChild.firstChild;
+      let text = parent.firstChild.children[1].firstChild;
+
+      // If active
+      if(parent.firstChild.children[1].classList.contains('r-13gxpu9')){
+        icon.style.color = color;
+        text.style.color = color;
+      } else if(parent.firstChild.classList.contains('r-zv2cs0')){
+        // If highlighted
+        text.style.color = color;
+      } else {
+        text.style.color = black;
+      }
+
+
+    } else {
+      // Small window view
+      
+    }
+  });
+}
+
 setInterval(() => {
   chrome.storage.sync.get("color", ({ color }) => {
     // Set link tags
@@ -64,6 +93,16 @@ setInterval(() => {
     // Get all a tags that are tabs
     let tabs = document.querySelectorAll('[role="tab"]');
     changeTabsColor(tabs, color);
+
+    // Set links
+    let sideLinks = document.querySelectorAll('[role="link"]');
+    sideLinks.forEach((link) => {
+      if(link.firstChild.classList){
+        if(link.firstChild.classList.contains('r-13gxpu9')){
+          link.firstChild.firstChild.style.color = color;
+        }
+      }
+    })
 
     // Set tweet button icon back to white
     let tIcon = document.querySelector('[aria-label="Tweet"]');
@@ -75,25 +114,15 @@ setInterval(() => {
     let icons = document.getElementsByTagName('g');
     changeColor(icons, color);
 
+    // Get all g tags from video player and set back to white
+    // Get all video player elements
+    let videos = document.querySelectorAll('[data-testid="videoPlayer"] g, [aria-label="Play"] g');
+    changeColor(videos, white);
+
     // Set the navbar icons back to black
     let navIcons = document.querySelectorAll('[data-testid="AppTabBar_Home_Link"], [data-testid="AppTabBar_Explore_Link"], [data-testid="AppTabBar_Notifications_Link"], [data-testid="AppTabBar_DirectMessage_Link"], [data-testid="AppTabBar_More_Menu"], [aria-label="Profile"], [aria-label="Bookmarks"], [aria-label="Lists"]');
-    navIcons.forEach((parent) => {
-      setIconColor(parent, black);
-
-      // Change text colors
-      if(parent.firstChild.children[1]){
-        // Expanded view
-        let text = parent.firstChild.children[1].firstChild;
-        if(parent.firstChild.classList.contains('r-zv2cs0')){
-          text.style.color = color;
-        } else {
-          text.style.color = black;
-        }
-      } else {
-        // Small window view
-        
-      }
-    });
+    changeNavIconColors(navIcons, color);
+  
 
     // Set navbar tweet button text white
     let navBtn = document.querySelector('[data-testid="SideNav_NewTweet_Button"]');
@@ -103,6 +132,17 @@ setInterval(() => {
     // .r-urgr8i is classed on feed buttons
     let buttons = document.querySelectorAll('[data-testid="SideNav_NewTweet_Button"],[data-testid="tweetButtonInline"], .r-urgr8i');
     changeBackground(buttons, color);
+
+    // Get profile button
+    let pBtn = document.querySelectorAll('.r-p1n3y5');
+    pBtn.forEach((btn) => {
+      btn.firstChild.firstChild.firstChild.style.color = color;
+      btn.style.borderColor = color;
+    })
+
+    // Change show thread button
+    let showBtns = document.querySelectorAll('.r-1n1174f');
+    changeColor(showBtns, color);
 
   });
 }, 200);
