@@ -16,6 +16,10 @@ hr {
   height: 0px;
 }
 
+.inline {
+  display: inline;
+}
+
 #blue {
   border-color: #1DA1F2;
   grid-row: 2;
@@ -71,7 +75,20 @@ p {
 #save {
   grid-row: 3;
   grid-column: 1;
+  width: 45%;
   align-self: flex-end;
+  margin-top: 100px;
+  border: 1px solid #1DA1F2;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+}
+
+#reset {
+  grid-row: 3;
+  grid-column: 1;
+  width: 45%;
+  align-self: flex-end;
+  justify-self: end;
   margin-top: 100px;
   border: 1px solid #1DA1F2;
   background-color: transparent;

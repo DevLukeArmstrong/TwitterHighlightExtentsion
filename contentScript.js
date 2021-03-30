@@ -57,7 +57,13 @@ function changeTabsColor(tabs, color) {
 
 function changeNavIconColors(icons, color){
   icons.forEach((parent) => {
-    setIconColor(parent, black);
+    let bodyColor = document.getElementsByTagName('body')[0].style.backgroundColor;
+    // If body theme set to dark or dim 
+    if(bodyColor === "rgb(0, 0, 0)" || bodyColor === "rgb(21, 32, 43)"){
+      setIconColor(parent, white);
+    } else {
+      setIconColor(parent, black);
+    }
 
     // Change text colors
     if(parent.firstChild.children[1]){
@@ -73,7 +79,11 @@ function changeNavIconColors(icons, color){
         // If highlighted
         text.style.color = color;
       } else {
-        text.style.color = black;
+        if(bodyColor === "rgb(0, 0, 0)" || bodyColor === "rgb(21, 32, 43)"){
+          text.style.color = white;
+        } else {
+          text.style.color = black;
+        }
       }
 
 
