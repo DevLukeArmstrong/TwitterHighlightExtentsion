@@ -85,11 +85,23 @@ function changeNavIconColors(icons, color){
           text.style.color = black;
         }
       }
-
-
     } else {
       // Small window view
-      
+      let icon = parent.firstChild.firstChild.firstChild.firstChild;
+
+      // If active
+      if(parent.firstChild.firstChild.firstChild.classList.contains('r-13gxpu9')){
+        icon.style.color = color;
+      } else if(parent.firstChild.classList.contains('r-zv2cs0')){
+        // If highlighted
+        icon.style.color = color;
+      } else {
+        if(bodyColor === "rgb(0, 0, 0)" || bodyColor === "rgb(21, 32, 43)"){
+          icon.style.color = white;
+        } else {
+          icon.style.color = black;
+        }
+      }
     }
   });
 }
@@ -118,6 +130,19 @@ setInterval(() => {
     let tIcon = document.querySelector('[aria-label="Tweet"]');
     if(tIcon.classList.contains('r-1v6e3re')){
       changeColor(tIcon.firstChild.firstChild.firstChild, white);
+    }
+
+    // Disable Twitter default colour customization 
+    let colourCustomDiv = document.querySelector('[aria-label="Color options"]');
+    let pColor;
+    let bodyColor = document.getElementsByTagName('body')[0].style.backgroundColor;
+    if(colourCustomDiv){
+      if(bodyColor === "rgb(0, 0, 0)" || bodyColor === "rgb(21, 32, 43)"){
+        pColor = white;
+      } else {
+        pcolor = black;
+      }
+      colourCustomDiv.innerHTML = `<p style="color:${pColor}; font-size: 1.2em; text-align: center"> Disable Twitter Highlighter extenstion to use this functionality</p>`;
     }
 
     // Set all icons to colour

@@ -7,7 +7,7 @@
     "service_worke": ["background.js"]
   },
   "permissions": [
-    "tabs","activeTab","storage"
+    "tabs","storage"
     ],
   "content_scripts": [
     {
